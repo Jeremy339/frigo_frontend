@@ -1,1 +1,93 @@
-<p>equipos works!</p>
+<div class="container">
+  <!-- Encabezado -->
+  <div class="header">
+    <h1>Equipo</h1>
+    <p>Complete los campos a continuación para registrar un equipo</p>
+  </div>
+
+  <!-- Botón para mostrar el formulario -->
+  <div class="button-container">
+    <button (click)="toggleForm()" class="btn-toggle-form">
+      <i class="fa fa-plus-circle"></i> Agregar Nuevo Equipo
+    </button>
+  </div>
+
+  <!-- Formulario: visible cuando showForm es true -->
+  <div class="card form-card" *ngIf="showForm">
+    <!-- Logo debajo del encabezado -->
+    <div class="logo-container">
+      <img src="assets/images/logo.jpg" alt="Logo" class="logo" />
+    </div>
+    
+    <form [formGroup]="equipmentForm" (ngSubmit)="addEquipment()" class="form-container">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="area"><i class="fa fa-map-marker-alt"></i> Área:</label>
+          <input id="area" type="text" formControlName="area" placeholder="Ingrese el área" />
+        </div>
+        <div class="form-group">
+          <label for="descripcion"><i class="fa fa-pencil-alt"></i> Descripción:</label>
+          <input id="descripcion" type="text" formControlName="descripcion" placeholder="Ingrese la descripción" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="marca"><i class="fa fa-tag"></i> Marca:</label>
+          <input id="marca" type="text" formControlName="marca" placeholder="Ingrese la marca" />
+        </div>
+        <div class="form-group">
+          <label for="modelo"><i class="fa fa-cogs"></i> Modelo:</label>
+          <input id="modelo" type="text" formControlName="modelo" placeholder="Ingrese el modelo" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="serie"><i class="fa fa-hashtag"></i> Serie:</label>
+          <input id="serie" type="text" formControlName="serie" placeholder="Ingrese la serie" />
+        </div>
+        <div class="form-group">
+          <label for="tipoCapacidad"><i class="fa fa-bolt"></i> Tipo de Capacidad:</label>
+          <input id="tipoCapacidad" type="text" formControlName="tipoCapacidad" placeholder="Ingrese el tipo de capacidad" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="refrigeracion"><i class="fa fa-snowflake"></i> Refrigeración:</label>
+          <input id="refrigeracion" type="text" formControlName="refrigeracion" placeholder="Ingrese el tipo de refrigeración" />
+        </div>
+        <div class="form-group">
+          <label for="psi"><i class="fa fa-tachometer-alt"></i> PSI:</label>
+          <input id="psi" type="number" formControlName="psi" placeholder="Ingrese el PSI" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="volts"><i class="fa fa-plug"></i> Volts:</label>
+          <input id="volts" type="number" formControlName="volts" placeholder="Ingrese los volts" />
+        </div>
+        <div class="form-group">
+          <label for="amp"><i class="fa fa-bolt"></i> Amp:</label>
+          <input id="amp" type="number" formControlName="amp" placeholder="Ingrese los amp" />
+        </div>
+      </div>
+
+      <button type="submit" class="btn-submit"><i class="fa fa-plus-circle"></i> Registrar Equipo</button>
+    </form>
+  </div>
+
+  <!-- Lista de equipos -->
+  <div class="equipment-list">
+    <div *ngFor="let eq of equipmentList" class="card equipment-card">
+      <h3>{{ eq.area }}</h3>
+      <p><strong>Descripción:</strong> {{ eq.descripcion }}</p>
+      <p><strong>Marca:</strong> {{ eq.marca }}</p>
+      <p><strong>Modelo:</strong> {{ eq.modelo }}</p>
+      <p><strong>Serie:</strong> {{ eq.serie }}</p>
+      <p><strong>Tipo de Capacidad:</strong> {{ eq.tipoCapacidad }}</p>
+      <p><strong>Refrigeración:</strong> {{ eq.refrigeracion }}</p>
+      <p><strong>PSI:</strong> {{ eq.psi }}</p>
+      <p><strong>Volts:</strong> {{ eq.volts }}</p>
+      <p><strong>Amp:</strong> {{ eq.amp }}</p>
+    </div>
+  </div>
+</div>
