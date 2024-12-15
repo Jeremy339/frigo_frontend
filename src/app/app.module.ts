@@ -5,8 +5,8 @@ import { HttpClientModule } from '@angular/common/http';  // Asegúrate de impor
 import { RouterModule } from '@angular/router';  // Importamos RouterModule para las rutas
 
 import { AppComponent } from './app.component';
-import { TicketsComponent } from './componets/tickets/tickets.component';
-import { InformeServicioComponent } from './componets/informe-servicio/informe-servicio.component';
+import { TicketsComponent } from './components/tickets/tickets.component';
+import { InformeServicioComponent } from './components/informe-servicio/informe-servicio.component';
 import { EquiposComponent } from './componets/equipos/equipos.component';
 import { routes } from './app.routes';  // Importamos las rutas directamente
 
