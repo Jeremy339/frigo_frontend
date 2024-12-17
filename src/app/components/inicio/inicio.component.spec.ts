@@ -8,7 +8,7 @@ describe('InicioComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [InicioComponent]
+      declarations: [InicioComponent]
     })
     .compileComponents();
 

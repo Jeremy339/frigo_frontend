@@ -14,7 +14,6 @@
 
   <!-- Formulario: visible cuando showForm es true -->
   <div class="card form-card" *ngIf="showForm">
-    <!-- Logo debajo del encabezado -->
     <div class="logo-container">
       <img src="assets/images/logo.jpg" alt="Logo" class="logo" />
     </div>
@@ -24,50 +23,88 @@
         <div class="form-group">
           <label for="area"><i class="fa fa-map-marker-alt"></i> Área:</label>
           <input id="area" type="text" formControlName="area" placeholder="Ingrese el área" />
+          <div *ngIf="equipmentForm.get('area')?.touched && equipmentForm.get('area')?.invalid" class="error">
+            Este campo es obligatorio.
+          </div>
         </div>
         <div class="form-group">
           <label for="descripcion"><i class="fa fa-pencil-alt"></i> Descripción:</label>
           <input id="descripcion" type="text" formControlName="descripcion" placeholder="Ingrese la descripción" />
+          <div *ngIf="equipmentForm.get('descripcion')?.touched && equipmentForm.get('descripcion')?.invalid" class="error">
+            Este campo es obligatorio.
+          </div>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
           <label for="marca"><i class="fa fa-tag"></i> Marca:</label>
           <input id="marca" type="text" formControlName="marca" placeholder="Ingrese la marca" />
+          <div *ngIf="equipmentForm.get('marca')?.touched && equipmentForm.get('marca')?.invalid" class="error">
+            Este campo es obligatorio.
+          </div>
         </div>
         <div class="form-group">
           <label for="modelo"><i class="fa fa-cogs"></i> Modelo:</label>
           <input id="modelo" type="text" formControlName="modelo" placeholder="Ingrese el modelo" />
+          <div *ngIf="equipmentForm.get('modelo')?.touched && equipmentForm.get('modelo')?.invalid" class="error">
+            Este campo es obligatorio.
+          </div>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
           <label for="serie"><i class="fa fa-hashtag"></i> Serie:</label>
           <input id="serie" type="text" formControlName="serie" placeholder="Ingrese la serie" />
+          <div *ngIf="equipmentForm.get('serie')?.touched && equipmentForm.get('serie')?.invalid" class="error">
+            Este campo es obligatorio.
+          </div>
         </div>
         <div class="form-group">
-          <label for="tipoCapacidad"><i class="fa fa-bolt"></i> Tipo de Capacidad:</label>
-          <input id="tipoCapacidad" type="text" formControlName="tipoCapacidad" placeholder="Ingrese el tipo de capacidad" />
+          <label for="tipo"><i class="fa fa-bolt"></i> Tipo:</label>
+          <input id="tipo" type="text" formControlName="tipo" placeholder="Tipo" />
+          <div *ngIf="equipmentForm.get('tipo')?.touched && equipmentForm.get('tipo')?.invalid" class="error">
+            Este campo es obligatorio.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="capacidad"><i class="fa fa-bolt"></i> Capacidad:</label>
+          <input id="capacidad" type="text" formControlName="capacidad" placeholder="Ingrese el tipo de capacidad" />
+          <div *ngIf="equipmentForm.get('capacidad')?.touched && equipmentForm.get('capacidad')?.invalid" class="error">
+            Este campo es obligatorio.
+          </div>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
           <label for="refrigeracion"><i class="fa fa-snowflake"></i> Refrigeración:</label>
           <input id="refrigeracion" type="text" formControlName="refrigeracion" placeholder="Ingrese el tipo de refrigeración" />
+          <div *ngIf="equipmentForm.get('refrigeracion')?.touched && equipmentForm.get('refrigeracion')?.invalid" class="error">
+            Este campo es obligatorio.
+          </div>
         </div>
         <div class="form-group">
           <label for="psi"><i class="fa fa-tachometer-alt"></i> PSI:</label>
           <input id="psi" type="number" formControlName="psi" placeholder="Ingrese el PSI" />
+          <div *ngIf="equipmentForm.get('psi')?.touched && equipmentForm.get('psi')?.invalid" class="error">
+            Este campo es obligatorio y debe ser un número.
+          </div>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
           <label for="volts"><i class="fa fa-plug"></i> Volts:</label>
           <input id="volts" type="number" formControlName="volts" placeholder="Ingrese los volts" />
+          <div *ngIf="equipmentForm.get('volts')?.touched && equipmentForm.get('volts')?.invalid" class="error">
+            Este campo es obligatorio y debe ser un número.
+          </div>
         </div>
         <div class="form-group">
           <label for="amp"><i class="fa fa-bolt"></i> Amp:</label>
           <input id="amp" type="number" formControlName="amp" placeholder="Ingrese los amp" />
+          <div *ngIf="equipmentForm.get('amp')?.touched && equipmentForm.get('amp')?.invalid" class="error">
+            Este campo es obligatorio y debe ser un número.
+          </div>
         </div>
       </div>
 
@@ -83,7 +120,7 @@
       <p><strong>Marca:</strong> {{ eq.marca }}</p>
       <p><strong>Modelo:</strong> {{ eq.modelo }}</p>
       <p><strong>Serie:</strong> {{ eq.serie }}</p>
-      <p><strong>Tipo de Capacidad:</strong> {{ eq.tipoCapacidad }}</p>
+      <p><strong>Tipo de Capacidad:</strong> {{ eq.tipo }}</p>
       <p><strong>Refrigeración:</strong> {{ eq.refrigeracion }}</p>
       <p><strong>PSI:</strong> {{ eq.psi }}</p>
       <p><strong>Volts:</strong> {{ eq.volts }}</p>

@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-inicio',
-  imports: [],
+  standalone: false,
+  
   templateUrl: './inicio.component.html',
   styleUrl: './inicio.component.scss'
 })

@@ -8,7 +8,7 @@ describe('EquiposComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [EquiposComponent]
+      declarations: [EquiposComponent]
     })
     .compileComponents();
 

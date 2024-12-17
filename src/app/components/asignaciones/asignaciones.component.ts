@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-asignaciones',
-  imports: [],
+  standalone: false,
+  
   templateUrl: './asignaciones.component.html',
   styleUrl: './asignaciones.component.scss'
 })

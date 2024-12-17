@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EquiposService } from '../../services/equipos/equipos.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-equipos',
@@ -18,19 +20,20 @@ export class EquiposComponent {
   showForm: boolean = false;
   imagePreview: string | null = null;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private equiposService: EquiposService) {  
     this.equipmentForm = this.fb.group({
-      area: [''],
-      descripcion: [''],
-      marca: [''],
-      modelo: [''],
-      serie: [''],
-      tipoCapacidad: [''],
-      refrigeracion: [''],
-      psi: [''],
-      volts: [''],
-      amp: [''],
-      image: [''] // Campo para la imagen
+      area: ['', Validators.required],  // Campo obligatorio
+      descripcion: ['', Validators.required],  // Campo obligatorio
+      marca: ['', Validators.required],  // Campo obligatorio
+      modelo: ['', Validators.required],  // Campo obligatorio
+      serie: ['', Validators.required],  // Campo obligatorio
+      tipo: ['', Validators.required],  // Campo obligatorio
+      capacidad: ['', Validators.required],  // Campo obligatorio
+      refrigeracion: ['', Validators.required],  // Campo obligatorio
+      psi: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],  // Campo obligatorio, solo números
+      volts: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],  // Campo obligatorio, solo números
+      amp: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],  // Campo obligatorio, solo números
+      image: [''] // Imagen (no obligatorio)
     });
   }
 
@@ -38,26 +41,56 @@ export class EquiposComponent {
     this.showForm = !this.showForm;
   }
 
-  // Manejo de la imagen seleccionada
   onImageChange(event: any) {
     const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = () => {
-        this.imagePreview = reader.result as string;  // Guardamos la imagen como base64
-        this.equipmentForm.patchValue({ image: reader.result }); // Actualizamos el formulario con la imagen
+        this.imagePreview = reader.result as string;
+        this.equipmentForm.patchValue({ image: reader.result });
       };
       reader.readAsDataURL(file);
     }
   }
 
-  // Agregar equipo a la lista
+  // Modificación de la función para enviar el equipo al backend
   addEquipment() {
     if (this.equipmentForm.valid) {
       const formData = this.equipmentForm.value;
-      this.equipmentList.push(formData);
-      this.equipmentForm.reset();
-      this.imagePreview = null; // Limpiamos la vista previa de la imagen
+
+      this.equiposService.crearEquipo(formData).subscribe(
+        (response) => {
+          console.log('Equipo creado con éxito:', response);
+          this.equipmentList.push(response);
+          this.equipmentForm.reset();
+          this.imagePreview = null;
+
+          Swal.fire({
+            title: '¡Éxito!',
+            text: 'El equipo ha sido creado correctamente.',
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
+          });
+        },
+        (error) => {
+          console.error('Error al crear equipo:', error);
+
+          Swal.fire({
+            title: 'Error',
+            text: 'Hubo un problema al crear el equipo. Intenta nuevamente.',
+            icon: 'error',
+            confirmButtonText: 'Aceptar'
+          });
+        }
+      );
+    } else {
+      // Si el formulario no es válido, mostrar un mensaje de advertencia
+      Swal.fire({
+        title: 'Advertencia',
+        text: 'Por favor, completa todos los campos del formulario.',
+        icon: 'warning',
+        confirmButtonText: 'Aceptar'
+      });
     }
   }
 }
