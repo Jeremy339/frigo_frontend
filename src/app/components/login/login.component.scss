@@ -1,0 +1,175 @@
+/* ========================== */
+/*        ESTILOS BASE        */
+/* ========================== */
+$primary-color: #003366;
+$secondary-color: #1662ad;
+$bg-color: #f3f4f6;
+$text-color: #333;
+$input-border-color: #ccc;
+$input-focus-color: #1662ad;
+
+body {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  background: linear-gradient(135deg, $bg-color, #e2e8f0);
+  color: $text-color;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ========================== */
+/*       ENCABEZADO           */
+/* ========================== */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: $primary-color;
+  color: #ffffff;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================== */
+/*    CONTENEDOR PRINCIPAL    */
+/* ========================== */
+.login-container {
+  margin-top: -50px;
+  width: 150%;
+  max-width: 560px;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ========================== */
+/*        RESTO DE ESTILOS    */
+/* ========================== */
+.logo {
+  width: 250px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: $primary-color;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.input-group {
+  width: 100%;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #444;
+}
+
+.input-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon i {
+  position: absolute;
+  left: 10px;
+  color: #666;
+  font-size: 1.2rem;
+}
+
+.input-icon input {
+  width: 100%;
+  padding: 12px;
+  padding-left: 40px; /* Deja espacio para el icono */
+  border: 1px solid $input-border-color;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-icon input:focus {
+  border-color: $input-focus-color;
+  box-shadow: 0 0 5px rgba(243, 128, 1, 0.3);
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, $secondary-color, $secondary-color);
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    background: linear-gradient(135deg, $primary-color, $secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.register-link {
+  margin-top: 15px;
+  font-size: 0.9rem;
+
+  a {
+    color: $secondary-color;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $primary-color;
+      text-decoration: underline;
+    }
+  }
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+/* Animación FadeIn */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

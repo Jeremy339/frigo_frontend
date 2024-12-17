@@ -1,1 +1,84 @@
-<p>tickets works!</p>
+<!-- src/app/components/tickets/tickets.component.html -->
+<div class="tickets-container">
+    <h1>Gestión de Tickets</h1>
+  
+    <div class="logo-container">
+      <img src="assets/images/logo.jpg" alt="Logo" class="logo" />
+    </div>
+  
+    <!-- Formulario para agregar tickets -->
+    <div class="form-container">
+      <form [formGroup]="ticketForm" (ngSubmit)="addTicket()">
+        <div class="form-group">
+          <label for="descripcion">Descripción:</label>
+          <input id="descripcion" formControlName="descripcion" type="text" placeholder="Descripción del ticket" />
+        </div>
+  
+        <div class="form-group">
+          <label for="estado">Estado:</label>
+          <select id="estado" formControlName="estado">
+            <option value="" disabled selected>Seleccione un estado</option>
+            <option value="Abierto">Abierto</option>
+            <option value="En Progreso">En Progreso</option>
+            <option value="Cerrado">Cerrado</option>
+          </select>
+        </div>
+  
+        <div class="form-group">
+          <label for="prioridad">Prioridad:</label>
+          <select id="prioridad" formControlName="prioridad">
+            <option value="" disabled selected>Seleccione una prioridad</option>
+            <option value="Alta">Alta</option>
+            <option value="Media">Media</option>
+            <option value="Baja">Baja</option>
+          </select>
+        </div>
+  
+        <div class="form-group">
+          <label for="usuario">Usuario:</label>
+          <input id="usuario" formControlName="usuario_id" type="number" placeholder="Usuario que genera el ticket" />
+        </div>
+  
+        <div class="form-group">
+          <label for="fecha_creacion">Fecha de Creación:</label>
+          <input id="fecha_creacion" formControlName="fecha_creacion" type="date" />
+        </div>
+  
+        <button type="submit" class="submit-button">Agregar Ticket</button>
+      </form>
+    </div>
+  
+    <!-- Lista de tickets -->
+    <div *ngIf="ticketsList.length > 0" class="tickets-list">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Descripción</th>
+            <th>Estado</th>
+            <th>Prioridad</th>
+            <th>Usuario</th>
+            <th>Fecha de Creación</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ticket of ticketsList; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ ticket.descripcion }}</td>
+            <td>{{ ticket.estado }}</td>
+            <td>{{ ticket.prioridad }}</td>
+            <td>{{ ticket.usuario_id }}</td>
+            <td>{{ ticket.fecha_creacion | date }}</td>
+            <td>
+                <button class="delete-button" (click)="deleteTicket(i, ticket.ticket_id)">Eliminar</button>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- Mensaje cuando no hay tickets -->
+    <p *ngIf="ticketsList.length === 0">No hay tickets disponibles.</p>
+  </div>
