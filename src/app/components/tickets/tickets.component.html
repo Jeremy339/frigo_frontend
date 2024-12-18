@@ -68,7 +68,7 @@
             <td>{{ ticket.descripcion }}</td>
             <td>{{ ticket.estado }}</td>
             <td>{{ ticket.prioridad }}</td>
-            <td>{{ ticket.usuario_id }}</td>
+            <td>{{ ticket.usuario.usuario_id || 'Desconocido' }}</td> <!-- Accedemos al nombre del usuario -->
             <td>{{ ticket.fecha_creacion | date }}</td>
             <td>
                 <button class="delete-button" (click)="deleteTicket(i, ticket.ticket_id)">Eliminar</button>

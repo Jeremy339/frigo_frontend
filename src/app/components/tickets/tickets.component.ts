@@ -19,7 +19,7 @@ import { Ticket, TicketsService } from '../../services/tickets/tickets.service';
 })
 export class TicketsComponent {
   ticketForm: FormGroup;
-  ticketsList: Ticket[] = [];  // Define la lista de tickets con tipo Ticket
+  ticketsList: Ticket[] = [];  // Definir la lista de tickets con tipo Ticket
 
   constructor(private fb: FormBuilder, private ticketsService: TicketsService) {
     this.ticketForm = this.fb.group({

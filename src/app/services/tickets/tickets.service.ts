@@ -3,6 +3,16 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
+// Definir la interfaz Usuario
+export interface Usuario {
+  usuario_id: number;
+  nombre: string;
+  correo: string;
+  password: string;
+  direccion: string;
+  telefono: string;
+}
+
 // Definir la interfaz Ticket
 export interface Ticket {
   ticket_id?: number;
@@ -10,7 +20,7 @@ export interface Ticket {
   prioridad: string;
   estado: string;
   fecha_creacion?: string;
-  usuario_id: number;
+  usuario: Usuario;  // Cambiado de usuario_id a un objeto completo de Usuario
 }
 
 // Respuesta de eliminar ticket
