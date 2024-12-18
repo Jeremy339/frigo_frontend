@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+
+.informe-servicio-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+
+  h1 {
+    color: #002855;
+    margin-bottom: 20px
+    }
+
+  .logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+
+    img.logo {
+      width: 150px;
+      height: auto;
+    }
+  }
+
+  .form-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #002855;
+        font-family: 'Roboto', sans-serif;
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-family: 'Roboto', sans-serif;
+
+        &:focus {
+          border-color: #007bff;
+          outline: none;
+        }
+      }
+
+      .error {
+        color: #dc3545;
+        font-size: 12px;
+        margin-top: 5px;
+      }
+    }
+
+    .submit-button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 16px;
+      font-family: 'Roboto', sans-serif;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
+
+  .informe-list {
+    margin-top: 20px;
+    font-family: 'Roboto', sans-serif;
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center;
+        font-family: 'Roboto', sans-serif;
+      }
+
+      th {
+        background-color: #002855;
+        color: white;
+        font-weight: bold;
+        font-family: 'Roboto', sans-serif;
+      }
+
+      .delete-button {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 4px;
+        font-family: 'Roboto', sans-serif;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #b02a37;
+        }
+      }
+    }
+  }
+
+  p {
+    color: #555;
+    font-style: italic;
+    font-family: 'Roboto', sans-serif;
+  }
+}

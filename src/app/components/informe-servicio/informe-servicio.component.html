@@ -1,1 +1,138 @@
-<p>informe-servicio works!</p>
+<div class="informe-servicio-container">
+    <h1>Gestión de Informes de Servicio</h1>
+  
+    <div class="logo-container">
+      <img src="assets/images/logo.jpg" alt="Logo" class="logo" />
+    </div>
+  
+    <!-- Formulario para agregar informe de servicio -->
+    <div class="form-container">
+      <form [formGroup]="informeForm" (ngSubmit)="agregarInforme()">
+        <!-- Usuario ID -->
+        <div class="form-group">
+          <label for="usuarios_id">Usuario ID:</label>
+          <input
+            id="usuario"
+            formControlName="usuario"
+            type="number"
+            placeholder="Ingrese el ID del usuario"
+          />
+          <div
+            *ngIf="informeForm.get('usuario')?.invalid && informeForm.get('usuario')?.touched"
+            class="error"
+          >
+            El campo Usuario ID es obligatorio.
+          </div>
+        </div>
+  
+        <!-- Fecha -->
+        <div class="form-group">
+          <label for="fecha">Fecha:</label>
+          <input id="fecha" formControlName="fecha" type="date" />
+          <div
+            *ngIf="informeForm.get('fecha')?.invalid && informeForm.get('fecha')?.touched"
+            class="error"
+          >
+            La fecha es obligatoria.
+          </div>
+        </div>
+  
+        <!-- Hora de Ingreso -->
+        <div class="form-group">
+          <label for="hora_ingreso">Hora de Ingreso:</label>
+          <input id="hora_ingreso" formControlName="hora_ingreso" type="time" />
+        </div>
+  
+        <!-- Hora de Salida -->
+        <div class="form-group">
+          <label for="hora_salida">Hora de Salida:</label>
+          <input id="hora_salida" formControlName="hora_salida" type="time" />
+        </div>
+  
+      <!-- Equipos -->
+<div class="form-group">
+    <label for="equipos_id">Equipos:</label>
+    <select id="equipos_id" formControlName="equipo">
+      <option value="" disabled>Seleccione un equipo</option>
+      <option *ngFor="let equipo of equiposList" [value]="equipo.equipo_id">
+        {{ equipo.modelo }}
+      </option>
+    </select>
+  </div>
+
+        <!-- Descripción del Trabajo -->
+        <div class="form-group">
+          <label for="descripcion_trabajo">Descripción del Trabajo:</label>
+          <input
+            id="descripcion_trabajo"
+            formControlName="descripcion_trabajo"
+            type="text"
+            placeholder="Descripción"
+          />
+          <div
+            *ngIf="
+              informeForm.get('descripcion_trabajo')?.invalid &&
+              informeForm.get('descripcion_trabajo')?.touched
+            "
+            class="error"
+          >
+            La descripción del trabajo es obligatoria.
+          </div>
+        </div>
+  
+        <!-- Asignación de Material -->
+<div class="form-group">
+  <label for="asignacion_material_id">Asignación de Material:</label>
+  <select id="asignacion_material_id" formControlName="asignacionMaterial">
+    <option value="" disabled>Seleccione material</option>
+    <option *ngFor="let material of materialesList" [value]="material.asignacion_material_id">
+      Cantidad: {{ material.cantidad_usada }}
+    </option>
+  </select>
+</div>
+  
+        <!-- Botón de Envío -->
+        <button type="submit" class="submit-button" [disabled]="informeForm.invalid">
+          Agregar Informe
+        </button>
+      </form>
+    </div>
+  
+    <!-- Lista de informes -->
+    <div *ngIf="informesList.length > 0" class="informe-list">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Usuario ID</th>
+            <th>Fecha</th>
+            <th>Hora Ingreso</th>
+            <th>Hora Salida</th>
+            <th>Equipo</th>
+            <th>Descripción</th>
+            <th>Material</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <tr *ngFor="let informe of informesList; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ informe.usuario?.usuario_id }}</td>
+            <td>{{ informe.fecha }}</td>
+            <td>{{ informe.hora_ingreso }}</td>
+            <td>{{ informe.hora_salida }}</td>
+            <td>{{ informe.equipo?.modelo }}</td>
+            <td>{{ informe.descripcion_trabajo }}</td>
+            <td>{{ informe.asignacionMaterial?.cantidad_usada}}</td>
+            <td>
+                <button class="delete-button" (click)="eliminarInforme(informe.informe_servicio_id, i)">Eliminar</button>            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- Mensaje cuando no hay informes -->
+    <p *ngIf="informesList.length === 0">No hay informes disponibles.</p>
+  </div>
+  
