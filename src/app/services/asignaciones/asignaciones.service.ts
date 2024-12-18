@@ -6,32 +6,30 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AsignacionesService {
-  private apiUrl = 'http://localhost:3000';  // Cambia esta URL por la correcta
 
-  constructor(private http: HttpClient) {}
+  private apiUrl = 'http://localhost:3000/asignaciones'; // URL de la API de asignaciones
+  private informesServicioUrl = 'http://localhost:3000/informes-servicio'; // URL de la API de informes de servicio
 
-  // Método para obtener todas las asignaciones
-  getAsignaciones(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/asignaciones`);
-  }
+  constructor(private http: HttpClient) { }
 
-  // Método para obtener todos los informes de servicios
+  // Obtener todos los informes de servicio
   getInformesServicios(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/informes-servicios`);  // Cambia esta URL por la correcta
+    return this.http.get<any[]>(this.informesServicioUrl);
   }
 
-  // Método para crear una asignación
+  // Crear una nueva asignación
   createAsignacion(asignacion: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/asignaciones`, asignacion);
+    return this.http.post(this.apiUrl, asignacion);
   }
 
-  // Método para actualizar una asignación
-  updateAsignacion(asignacion: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/asignaciones`, asignacion);
+  // Obtener todas las asignaciones
+  getAsignaciones(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);  // Utilizamos la URL de asignaciones
   }
 
-  // Método para eliminar una asignación
+  // Eliminar una asignación
   deleteAsignacion(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrl}/asignaciones/${id}`);
+    const url = `${this.apiUrl}/${id}`;  // Formato de la URL para eliminar por id
+    return this.http.delete(url);
   }
 }

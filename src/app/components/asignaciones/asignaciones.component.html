@@ -1,56 +1,55 @@
 <div class="container">
-    <h1>Asignaciones</h1>
-  
-    <!-- Formulario para crear una nueva asignación -->
-    <form (ngSubmit)="onSubmit()" #asignacionForm="ngForm">
-      <div class="form-group">
-        <label for="informeServicio">Informe Servicio</label>
-        <select id="informeServicio" class="form-control" [(ngModel)]="asignacion.informeServicio" name="informeServicio" required>
-          <option *ngFor="let informe of informesServicios" [value]="informe.id">{{ informe.descripcion }}</option>
-        </select>
-      </div>
-  
-      <div class="form-group">
-        <label for="fecha_asignacion">Fecha de Asignación</label>
-        <input type="date" id="fecha_asignacion" class="form-control" [(ngModel)]="asignacion.fecha_asignacion" name="fecha_asignacion" required>
-      </div>
-  
-      <div class="form-group">
-        <label for="estado">Estado</label>
-        <select id="estado" class="form-control" [(ngModel)]="asignacion.estado" name="estado" required>
-          <option value="pendiente">Pendiente</option>
-          <option value="en_progreso">En Progreso</option>
-          <option value="completado">Completado</option>
-        </select>
-      </div>
-  
-      <button type="submit" class="btn btn-primary" [disabled]="!asignacionForm.form.valid">Guardar</button>
-    </form>
-  
-    <hr>
-  
-    <!-- Lista de asignaciones -->
-    <h2>Lista de Asignaciones</h2>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Informe Servicio</th>
-          <th>Fecha Asignación</th>
-          <th>Estado</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let asignacion of asignaciones">
-          <td>{{ asignacion.informeServicio.descripcion }}</td>
-          <td>{{ asignacion.fecha_asignacion | date }}</td>
-          <td>{{ asignacion.estado }}</td>
-          <td>
-            <button class="btn btn-warning" (click)="editAsignacion(asignacion)">Editar</button>
-            <button class="btn btn-danger" (click)="deleteAsignacion(asignacion.asignacion_id)">Eliminar</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  
+  <h1>Asignaciones</h1>
+
+  <!-- Formulario para crear una nueva asignación -->
+  <form (ngSubmit)="onSubmit()" #asignacionForm="ngForm">
+    <div class="form-group">
+      <label for="informeServicio">Informe Servicio</label>
+      <select id="informeServicio" class="form-control" [(ngModel)]="asignacion.informeServicio" name="informeServicio" required>
+        <option *ngFor="let informe of informesServicios" [value]="informe.informe_servicio_id">{{ informe.informe_servicio_id }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="fecha_asignacion">Fecha de Asignación</label>
+      <input type="date" id="fecha_asignacion" class="form-control" [(ngModel)]="asignacion.fecha_asignacion" name="fecha_asignacion" required>
+    </div>
+
+    <div class="form-group">
+      <label for="estado">Estado</label>
+      <select id="estado" class="form-control" [(ngModel)]="asignacion.estado" name="estado" required>
+        <option value="pendiente">Pendiente</option>
+        <option value="en_progreso">En Progreso</option>
+        <option value="completado">Completado</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!asignacionForm.form.valid">Guardar</button>
+  </form>
+
+  <hr>
+
+  <!-- Lista de asignaciones -->
+  <h2>Lista de Asignaciones</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Informe Servicio</th>
+        <th>Fecha Asignación</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let asignacion of asignaciones">
+        <td>{{ asignacion.informeServicio?.informe_servicio_id || 'No disponible' }}</td>
+        <td>{{ asignacion.fecha_asignacion | date }}</td>
+        <td>{{ asignacion.estado }}</td>
+        <td>
+          
+          <button class="btn btn-danger" (click)="deleteAsignacion(asignacion.asignacion_id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
