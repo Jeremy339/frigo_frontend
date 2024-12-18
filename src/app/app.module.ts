@@ -13,6 +13,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { TicketsComponent } from './components/tickets/tickets.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component'; // Importa el SidebarComponent
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { TicketsComponent } from './components/tickets/tickets.component';
     LoginComponent,
     RegisterComponent,
     TicketsComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,

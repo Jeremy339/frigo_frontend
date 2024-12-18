@@ -1,0 +1,46 @@
+<nav class="sidebar">
+    <ul>
+      <li>
+        <a href="/inicio">
+          <fa-icon [icon]="faHome" class="menu-icon"></fa-icon>
+          <span>Inicio</span>
+        </a>
+      </li>
+      <li>
+        <a href="/tickets">
+          <fa-icon [icon]="faTicketAlt" class="menu-icon"></fa-icon>
+          <span>Gestión de Tickets</span>
+        </a>
+      </li>
+      <li>
+        <a href="/asignaciones">
+          <fa-icon [icon]="faTasks" class="menu-icon"></fa-icon>
+          <span>Asignaciones</span>
+        </a>
+      </li>
+      <li>
+        <a href="/equipos">
+          <fa-icon [icon]="faCogs" class="menu-icon"></fa-icon>
+          <span>Equipos</span>
+        </a>
+      </li>
+      <li>
+        <a href="/informe-servicio">
+          <fa-icon [icon]="faFileAlt" class="menu-icon"></fa-icon>
+          <span>Informe de Servicio</span>
+        </a>
+      </li>
+      
+      <!-- Línea divisoria entre los elementos del menú y "Cerrar sesión" -->
+      <li class="divider"></li>
+  
+      <!-- Añadir el enlace de "Cerrar sesión" con la clase logout -->
+      <li class="logout">
+        <a (click)="logout()">
+          <fa-icon [icon]="faSignOutAlt" class="menu-icon"></fa-icon>
+          <span>Cerrar sesión</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  

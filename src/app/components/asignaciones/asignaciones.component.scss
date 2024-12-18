@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  margin: 20px auto;
+  padding: 30px;
+  max-width: 1200px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+  text-align: center;
+  color: #002855; // Azul oscuro
+  font-weight: normal;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 2.2em;
+}
+
+h2 {
+  font-size: 1.8em;
+}
+
+.form-group {
+  margin-bottom: 15px;
+
+  label {
+    display: block;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+    &:focus {
+      outline: none;
+      border-color: #002855;
+    }
+  }
+}
+
+button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: bold;
+  border: none;
+
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+}
+
+/* Botón Guardar */
+.btn-primary {
+  background-color: #4fc3f7; // Celeste claro inicial
+  color: white;
+  display: block;
+  margin: 20px auto 0;
+  text-align: center;
+  padding: 12px 25px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #002855; // Azul oscuro al pasar el mouse
+  }
+}
+
+/* Botones de la tabla */
+.btn-warning {
+  background-color: #f1c40f;
+  color: black;
+
+  &:hover {
+    background-color: #e2b202;
+  }
+}
+
+.btn-danger {
+  background-color: #e74c3c;
+  color: white;
+
+  &:hover {
+    background-color: #c0392b;
+  }
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+
+  th, td {
+    text-align: center;
+    padding: 15px;
+    font-size: 15px;
+    border: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #002855;
+    color: white;
+    font-weight: normal;
+  }
+
+  td {
+    background-color: #f9f9f9;
+    color: #333;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  h1, h2 {
+    font-size: 1.8em;
+  }
+
+  .form-group {
+    label {
+      font-size: 14px;
+    }
+
+    .form-control {
+      font-size: 14px;
+    }
+  }
+
+  th, td {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  button {
+    width: 100%;
+    margin: 5px 0;
+  }
+}

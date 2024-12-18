@@ -1,13 +1,25 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { SidebarComponent } from './components/sidebar/sidebar.component'; // Importa el componente de sidebar
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
   standalone: true,
+  imports: [RouterModule, CommonModule, SidebarComponent],  // Asegúrate de importar CommonModule y SidebarComponent
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'frigo_frontend';
+  showSidebar = true;
+
+  constructor(private router: Router) {
+    this.router.events.subscribe(() => {
+      if (this.router.url === '/login' || this.router.url === '/register') {
+        this.showSidebar = false;
+      } else {
+        this.showSidebar = true;
+      }
+    });
+  }
 }

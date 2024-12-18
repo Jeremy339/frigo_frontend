@@ -1,0 +1,75 @@
+.sidebar {
+    width: 250px; /* Ancho fijo del sidebar */
+    height: 100vh; /* Toda la altura de la ventana */
+    background-color: #1c2531; /* Fondo moderno */
+    color: #ffffff;
+    padding: 20px 0; /* Espaciado interno superior/inferior */
+    position: fixed; /* Sidebar fijo */
+    top: 0; /* Posicionado desde la parte superior */
+    left: 0; /* Mueve el sidebar a la posición izquierda sin espacio extra */
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+  
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+  
+      li {
+        margin-bottom: 15px;
+  
+        a {
+          text-decoration: none;
+          color: #ffffff;
+          display: flex;
+          align-items: center;
+          padding: 10px 15px;
+          border-radius: 8px;
+          transition: all 0.3s ease;
+  
+          .menu-icon {
+            margin-right: 10px;
+            font-size: 18px;
+          }
+  
+          span {
+            font-size: 16px;
+            font-weight: 400;
+          }
+  
+          &:hover {
+            background-color: #17a2b8;
+            color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          }
+  
+          &.active {
+            background-color: #0d6efd;
+            color: #ffffff;
+            font-weight: bold;
+          }
+        }
+      }
+  
+      /* Línea divisoria entre los elementos del menú */
+      li.divider {
+        margin-top: 20px;  /* Agrega un poco de espacio antes de la línea */
+        border-top: 1px solid #555; /* Línea divisoria */
+        margin-bottom: 20px; /* Espacio debajo de la línea */
+      }
+  
+      /* Estilo para el li de "Cerrar sesión" */
+      li.logout {
+        margin-top: auto; /* Empuja el "Cerrar sesión" al final */
+        margin-top: 30px;  /* Espacio adicional para separar más */
+      }
+    }
+  }
+  
+  .main-content {
+    margin-left: 250px; /* Ajusta el contenido según el ancho del sidebar */
+    margin-top: 0;
+    padding: 20px;
+  }
+  
